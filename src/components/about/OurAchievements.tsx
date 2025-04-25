@@ -1,21 +1,20 @@
-
-import AchievementCard from "./AchievementCard";
 import SectionHeading from "./SectionHeading";
+import AchievementCard from "./AchievementCard";
 
 const OurAchievements = () => {
   const achievements = [
     {
-      number: "13+",
+      value: "13+",
       title: "Лет опыта",
       description: "Более 13 лет создаем неповторимые десерты"
     },
     {
-      number: "10K+",
+      value: "10K+",
       title: "Довольных клиентов",
       description: "Тысячи благодарных отзывов от наших клиентов"
     },
     {
-      number: "5",
+      value: "5",
       title: "Наград",
       description: "Победители городских конкурсов кондитерского мастерства"
     }
@@ -30,7 +29,7 @@ const OurAchievements = () => {
           {achievements.map((achievement, index) => (
             <AchievementCard 
               key={index}
-              number={achievement.number}
+              value={achievement.value}
               title={achievement.title}
               description={achievement.description}
             />

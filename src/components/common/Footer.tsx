@@ -1,6 +1,3 @@
-
-import { Link } from "react-router-dom";
-
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white py-12 mt-auto">
@@ -14,19 +11,19 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Каталог</h3>
             <ul className="space-y-2">
-              <li><Link to="/catalog" className="text-gray-400 hover:text-white transition">Торты</Link></li>
-              <li><Link to="/catalog" className="text-gray-400 hover:text-white transition">Пирожные</Link></li>
-              <li><Link to="/catalog" className="text-gray-400 hover:text-white transition">Эклеры</Link></li>
-              <li><Link to="/catalog" className="text-gray-400 hover:text-white transition">Макаруны</Link></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition">Торты</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition">Пирожные</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition">Эклеры</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition">Макаруны</a></li>
             </ul>
           </div>
           
           <div>
             <h3 className="text-lg font-semibold mb-4">Информация</h3>
             <ul className="space-y-2">
-              <li><Link to="/about" className="text-gray-400 hover:text-white transition">О нас</Link></li>
-              <li><Link to="/contacts" className="text-gray-400 hover:text-white transition">Доставка и оплата</Link></li>
-              <li><Link to="/contacts" className="text-gray-400 hover:text-white transition">Возврат и обмен</Link></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition">О нас</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition">Доставка и оплата</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white transition">Возврат и обмен</a></li>
             </ul>
           </div>
           
@@ -46,7 +43,7 @@ const Footer = () => {
         </div>
         
         <div className="border-t border-gray-800 pt-8">
-          <p className="text-gray-400 text-center">&copy; {new Date().getFullYear()} Сладкоежка. Все права защищены.</p>
+          <p className="text-gray-400 text-center">&copy; 2023 Сладкоежка. Все права защищены.</p>
         </div>
       </div>
     </footer>
