@@ -6,7 +6,7 @@ interface TeamMemberCardProps {
 
 const TeamMemberCard = ({ name, role, imageSrc }: TeamMemberCardProps) => {
   return (
-    <div className="bg-white rounded-xl shadow-sm overflow-hidden hover-card">
+    <div className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition">
       <img 
         src={imageSrc} 
         alt={name} 

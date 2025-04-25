@@ -1,6 +1,4 @@
 
-import { ReactNode } from "react";
-
 interface HeroSectionProps {
   title: string;
   description: string;
