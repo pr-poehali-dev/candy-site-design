@@ -1,198 +1,247 @@
-import Header from "@/components/Header";
-import { Heart, Award, Clock, Users } from "lucide-react";
-import { Link } from "react-router-dom";
+import Header from "../components/Header";
+import { Award, Heart, Leaf, Utensils } from "lucide-react";
 
 const About = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
       
-      {/* Banner */}
-      <div className="bg-accent py-12 mb-8">
-        <div className="container mx-auto px-4">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">О нас</h1>
-          <div className="flex items-center text-muted-foreground">
-            <Link to="/" className="hover:text-primary">Главная</Link>
-            <span className="mx-2">•</span>
-            <span>О нас</span>
-          </div>
+      {/* Hero Section */}
+      <section className="bg-gradient-to-r from-pink-50 to-purple-50 py-12 md:py-20">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">О кондитерской "Сладкоежка"</h1>
+          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+            Мы — команда влюбленных в свое дело кондитеров, которые создают не просто десерты, а настоящие произведения искусства с 2010 года.
+          </p>
         </div>
-      </div>
-
-      {/* Story Section */}
-      <section className="container mx-auto px-4 mb-16 animate-fade-in">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gradient">Наша история</h2>
-            <p className="mb-4 text-muted-foreground">
-              Кондитерская "Сладкоежка" была основана в 2010 году с простой миссией: создавать неповторимые десерты, 
-              которые дарят радость и делают особые моменты жизни еще более запоминающимися.
-            </p>
-            <p className="mb-4 text-muted-foreground">
-              Мы начинали как маленькая семейная пекарня, где каждый торт создавался с любовью и вниманием к деталям. 
-              Сегодня мы выросли, но наши ценности остались прежними - качество, натуральность и индивидуальный подход к каждому заказу.
-            </p>
-            <p className="text-muted-foreground">
-              Наша команда профессиональных кондитеров постоянно совершенствует свое мастерство, 
-              изучая новые техники и тренды в мире кондитерского искусства.
-            </p>
-          </div>
-          <div className="relative">
-            <img 
-              src="https://images.unsplash.com/photo-1556910096-5cdca10542b9?q=80&w=3270&auto=format&fit=crop" 
-              alt="Наша кондитерская" 
-              className="rounded-lg shadow-md w-full"
-            />
-            <div className="absolute -bottom-6 -left-6 bg-primary text-primary-foreground px-6 py-4 rounded-lg shadow-lg">
-              <p className="text-2xl font-bold">13+ лет</p>
-              <p>создаем сладкие шедевры</p>
+      </section>
+      
+      {/* Our Story */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl font-bold mb-6">Наша история</h2>
+              <p className="text-gray-700 mb-4">
+                История "Сладкоежки" началась в небольшой домашней кухне, где наш шеф-кондитер Мария экспериментировала с семейными рецептами. 
+                Её страсть к созданию уникальных десертов быстро превратилась в любимое дело, а затем — в успешный бизнес.
+              </p>
+              <p className="text-gray-700 mb-4">
+                Сегодня "Сладкоежка" — это современная кондитерская с собственным производством, командой профессионалов и сотнями довольных клиентов. 
+                Мы сохраняем традиции классической кондитерской школы, но не боимся экспериментировать и создавать новые вкусы.
+              </p>
+              <p className="text-gray-700">
+                Каждый день мы работаем над тем, чтобы наши десерты приносили радость и делали ваши особенные моменты еще более запоминающимися.
+              </p>
+            </div>
+            <div className="relative">
+              <img 
+                src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                alt="Наша команда за работой" 
+                className="rounded-2xl shadow-xl w-full object-cover h-[400px]"
+              />
+              <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-xl shadow-lg">
+                <p className="font-semibold">Основано в 2010 году</p>
+                <p className="text-sm text-gray-600">13 лет создаем сладкие шедевры</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
-
-      {/* Values Section */}
-      <section className="bg-secondary py-16 mb-16 animate-fade-in" style={{animationDelay: "0.1s"}}>
+      
+      {/* Our Values */}
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center">Наши ценности</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="bg-background p-6 rounded-lg shadow-sm hover-card">
-              <div className="w-12 h-12 mb-4 flex items-center justify-center rounded-full bg-primary text-primary-foreground">
-                <Heart size={24} />
+          <h2 className="text-3xl font-bold text-center mb-12">Наши ценности</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition flex flex-col items-center text-center">
+              <div className="bg-primary/10 p-3 rounded-full mb-4">
+                <Leaf size={24} className="text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Натуральность</h3>
+              <p className="text-gray-600">Мы используем только натуральные ингредиенты без искусственных добавок</p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition flex flex-col items-center text-center">
+              <div className="bg-primary/10 p-3 rounded-full mb-4">
+                <Utensils size={24} className="text-primary" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Мастерство</h3>
+              <p className="text-gray-600">Наши кондитеры — настоящие мастера своего дела с многолетним опытом</p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition flex flex-col items-center text-center">
+              <div className="bg-primary/10 p-3 rounded-full mb-4">
+                <Heart size={24} className="text-primary" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Любовь к делу</h3>
-              <p className="text-muted-foreground">Мы искренне любим то, что делаем, и вкладываем частичку души в каждое изделие</p>
+              <p className="text-gray-600">Мы вкладываем душу в каждый десерт, который создаем</p>
             </div>
-            <div className="bg-background p-6 rounded-lg shadow-sm hover-card">
-              <div className="w-12 h-12 mb-4 flex items-center justify-center rounded-full bg-primary text-primary-foreground">
-                <Award size={24} />
+            
+            <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition flex flex-col items-center text-center">
+              <div className="bg-primary/10 p-3 rounded-full mb-4">
+                <Award size={24} className="text-primary" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Качество</h3>
-              <p className="text-muted-foreground">Только натуральные ингредиенты и строгий контроль на всех этапах производства</p>
-            </div>
-            <div className="bg-background p-6 rounded-lg shadow-sm hover-card">
-              <div className="w-12 h-12 mb-4 flex items-center justify-center rounded-full bg-primary text-primary-foreground">
-                <Clock size={24} />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Свежесть</h3>
-              <p className="text-muted-foreground">Мы готовим десерты непосредственно перед доставкой, чтобы вы получили их свежими</p>
-            </div>
-            <div className="bg-background p-6 rounded-lg shadow-sm hover-card">
-              <div className="w-12 h-12 mb-4 flex items-center justify-center rounded-full bg-primary text-primary-foreground">
-                <Users size={24} />
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Клиенты</h3>
-              <p className="text-muted-foreground">Мы ценим каждого клиента и стремимся превзойти ваши ожидания</p>
+              <p className="text-gray-600">Постоянный контроль качества на всех этапах производства</p>
             </div>
           </div>
         </div>
       </section>
-
-      {/* Team Section */}
-      <section className="container mx-auto px-4 mb-16 animate-fade-in" style={{animationDelay: "0.2s"}}>
-        <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center">Наша команда</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-          <div className="text-center">
-            <div className="mb-4 relative">
-              <img 
-                src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?q=80&w=3280&auto=format&fit=crop" 
-                alt="Александр Петров" 
-                className="w-40 h-40 rounded-full object-cover mx-auto border-4 border-muted"
-              />
-            </div>
-            <h3 className="text-lg font-semibold">Александр Петров</h3>
-            <p className="text-primary">Шеф-кондитер</p>
-          </div>
-          <div className="text-center">
-            <div className="mb-4">
-              <img 
-                src="https://images.unsplash.com/photo-1557555187-23d685287bc3?q=80&w=3000&auto=format&fit=crop" 
-                alt="Мария Иванова" 
-                className="w-40 h-40 rounded-full object-cover mx-auto border-4 border-muted"
-              />
-            </div>
-            <h3 className="text-lg font-semibold">Мария Иванова</h3>
-            <p className="text-primary">Кондитер</p>
-          </div>
-          <div className="text-center">
-            <div className="mb-4">
-              <img 
-                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=3149&auto=format&fit=crop" 
-                alt="Дмитрий Сидоров" 
-                className="w-40 h-40 rounded-full object-cover mx-auto border-4 border-muted"
-              />
-            </div>
-            <h3 className="text-lg font-semibold">Дмитрий Сидоров</h3>
-            <p className="text-primary">Директор</p>
-          </div>
-          <div className="text-center">
-            <div className="mb-4">
-              <img 
-                src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=2461&auto=format&fit=crop" 
-                alt="Анна Смирнова" 
-                className="w-40 h-40 rounded-full object-cover mx-auto border-4 border-muted"
-              />
-            </div>
-            <h3 className="text-lg font-semibold">Анна Смирнова</h3>
-            <p className="text-primary">Менеджер</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Achievements Section */}
-      <section className="bg-accent py-16 mb-16 animate-fade-in" style={{animationDelay: "0.3s"}}>
+      
+      {/* Our Achievements */}
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold mb-12 text-center">Наши достижения</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-4xl font-bold text-primary mb-2">5000+</div>
-              <p className="text-lg">Довольных клиентов</p>
+          <h2 className="text-3xl font-bold text-center mb-12">Наши достижения</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center p-6">
+              <div className="text-5xl font-bold text-primary mb-4">13+</div>
+              <h3 className="text-xl font-semibold mb-2">Лет опыта</h3>
+              <p className="text-gray-600">Более 13 лет создаем неповторимые десерты</p>
             </div>
-            <div>
-              <div className="text-4xl font-bold text-primary mb-2">10000+</div>
-              <p className="text-lg">Изготовлено тортов</p>
+            
+            <div className="text-center p-6">
+              <div className="text-5xl font-bold text-primary mb-4">10K+</div>
+              <h3 className="text-xl font-semibold mb-2">Довольных клиентов</h3>
+              <p className="text-gray-600">Тысячи благодарных отзывов от наших клиентов</p>
             </div>
-            <div>
-              <div className="text-4xl font-bold text-primary mb-2">15</div>
-              <p className="text-lg">Профессиональных наград</p>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-primary mb-2">25</div>
-              <p className="text-lg">Уникальных рецептов</p>
+            
+            <div className="text-center p-6">
+              <div className="text-5xl font-bold text-primary mb-4">5</div>
+              <h3 className="text-xl font-semibold mb-2">Наград</h3>
+              <p className="text-gray-600">Победители городских конкурсов кондитерского мастерства</p>
             </div>
           </div>
         </div>
       </section>
-
+      
+      {/* Our Team */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12">Наша команда</h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="bg-white rounded-xl shadow-sm overflow-hidden hover-card">
+              <img 
+                src="https://images.unsplash.com/photo-1581299894007-aaa50297cf16?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
+                alt="Мария Иванова" 
+                className="w-full h-64 object-cover"
+              />
+              <div className="p-4 text-center">
+                <h3 className="font-semibold text-lg">Мария Иванова</h3>
+                <p className="text-primary">Шеф-кондитер</p>
+              </div>
+            </div>
+            
+            <div className="bg-white rounded-xl shadow-sm overflow-hidden hover-card">
+              <img 
+                src="https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
+                alt="Александр Петров" 
+                className="w-full h-64 object-cover"
+              />
+              <div className="p-4 text-center">
+                <h3 className="font-semibold text-lg">Александр Петров</h3>
+                <p className="text-primary">Кондитер-технолог</p>
+              </div>
+            </div>
+            
+            <div className="bg-white rounded-xl shadow-sm overflow-hidden hover-card">
+              <img 
+                src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
+                alt="Елена Сидорова" 
+                className="w-full h-64 object-cover"
+              />
+              <div className="p-4 text-center">
+                <h3 className="font-semibold text-lg">Елена Сидорова</h3>
+                <p className="text-primary">Декоратор</p>
+              </div>
+            </div>
+            
+            <div className="bg-white rounded-xl shadow-sm overflow-hidden hover-card">
+              <img 
+                src="https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
+                alt="Дмитрий Козлов" 
+                className="w-full h-64 object-cover"
+              />
+              <div className="p-4 text-center">
+                <h3 className="font-semibold text-lg">Дмитрий Козлов</h3>
+                <p className="text-primary">Менеджер</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* CTA */}
+      <section className="py-16 bg-gradient-to-r from-pink-50 to-purple-50">
+        <div className="container mx-auto px-4 max-w-4xl text-center">
+          <h2 className="text-3xl font-bold mb-6">Попробуйте наши десерты</h2>
+          <p className="text-gray-700 mb-8">Закажите прямо сейчас или посетите нашу кондитерскую</p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a 
+              href="/catalog" 
+              className="px-8 py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary/90 transition shadow-lg shadow-primary/20"
+            >
+              Перейти в каталог
+            </a>
+            <a 
+              href="/contacts" 
+              className="px-8 py-3 bg-white text-gray-800 rounded-lg font-medium hover:bg-gray-50 transition border border-gray-200"
+            >
+              Наши контакты
+            </a>
+          </div>
+        </div>
+      </section>
+      
       {/* Footer */}
-      <footer className="bg-gradient-to-r from-secondary to-accent mt-auto border-t border-border">
-        <div className="container mx-auto px-4 py-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <footer className="bg-gray-900 text-white py-12 mt-auto">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div>
-              <h3 className="font-bold text-xl mb-4 text-primary">Сладкоежка</h3>
-              <p className="text-muted-foreground mb-4">Вкусные десерты для любого события</p>
-              <p className="text-sm text-muted-foreground">© 2023 Сладкоежка. Все права защищены.</p>
+              <h3 className="text-xl font-bold mb-4">Сладкоежка</h3>
+              <p className="text-gray-400">Изысканные десерты для любого случая</p>
             </div>
+            
             <div>
-              <h4 className="font-semibold mb-4">Контакты</h4>
-              <p className="mb-2">Телефон: +7 (999) 123-45-67</p>
-              <p className="mb-2">Email: info@sweetshop.ru</p>
-              <p>Адрес: г. Москва, ул. Сладкая, д. 10</p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Информация</h4>
+              <h3 className="text-lg font-semibold mb-4">Каталог</h3>
               <ul className="space-y-2">
-                <li>
-                  <Link to="/about" className="hover:text-primary transition-colors">О нас</Link>
+                <li><a href="#" className="text-gray-400 hover:text-white transition">Торты</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-white transition">Пирожные</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-white transition">Эклеры</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-white transition">Макаруны</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Информация</h3>
+              <ul className="space-y-2">
+                <li><a href="#" className="text-gray-400 hover:text-white transition">О нас</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-white transition">Доставка и оплата</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-white transition">Возврат и обмен</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="text-lg font-semibold mb-4">Контакты</h3>
+              <ul className="space-y-2">
+                <li className="flex items-start">
+                  <span className="text-gray-400 mr-2">📍</span>
+                  <span className="text-gray-400">г. Москва, ул. Кондитерская, 123</span>
                 </li>
-                <li>
-                  <Link to="/catalog" className="hover:text-primary transition-colors">Каталог</Link>
-                </li>
-                <li>
-                  <Link to="/contacts" className="hover:text-primary transition-colors">Контакты</Link>
+                <li className="flex items-start">
+                  <span className="text-gray-400 mr-2">📱</span>
+                  <a href="tel:+74951234567" className="text-gray-400 hover:text-white transition">+7 (495) 123-45-67</a>
                 </li>
               </ul>
             </div>
+          </div>
+          
+          <div className="border-t border-gray-800 pt-8">
+            <p className="text-gray-400 text-center">&copy; 2023 Сладкоежка. Все права защищены.</p>
           </div>
         </div>
       </footer>

@@ -1,26 +1,28 @@
 import { Link } from "react-router-dom";
 
 interface CategoryCardProps {
-  id: number;
-  name: string;
+  title: string;
+  description: string;
   image: string;
-  count: number;
+  link: string;
 }
 
-const CategoryCard = ({ id, name, image, count }: CategoryCardProps) => {
+const CategoryCard = ({ title, description, image, link }: CategoryCardProps) => {
   return (
-    <Link 
-      to={`/catalog?category=${id}`} 
-      className="group relative block h-60 rounded-lg overflow-hidden hover-card"
-    >
-      <img 
-        src={image} 
-        alt={name} 
-        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
-        <h3 className="text-white text-xl font-semibold mb-1">{name}</h3>
-        <p className="text-white/80 text-sm">{count} товаров</p>
+    <Link to={link} className="block group">
+      <div className="rounded-2xl overflow-hidden shadow-lg hover-card">
+        <div className="relative h-60">
+          <img 
+            src={image} 
+            alt={title} 
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+          <div className="absolute bottom-0 left-0 p-6 text-white">
+            <h3 className="text-2xl font-bold mb-1">{title}</h3>
+            <p className="text-sm text-gray-200">{description}</p>
+          </div>
+        </div>
       </div>
     </Link>
   );

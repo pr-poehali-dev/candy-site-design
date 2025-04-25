@@ -1,37 +1,48 @@
-import { Button } from "@/components/ui/button";
-import { ShoppingCart } from "lucide-react";
+import { Heart, ShoppingCart } from "lucide-react";
+import { useState } from "react";
 
 interface ProductCardProps {
-  id: number;
   name: string;
   price: number;
   image: string;
-  category: string;
+  rating?: number;
 }
 
-const ProductCard = ({ name, price, image, category }: ProductCardProps) => {
+const ProductCard = ({ name, price, image, rating }: ProductCardProps) => {
+  const [isLiked, setIsLiked] = useState(false);
+
   return (
-    <div className="bg-background rounded-lg overflow-hidden border border-border shadow-sm hover-card">
-      <div className="relative h-48 overflow-hidden">
+    <div className="bg-white rounded-xl shadow-sm hover-card overflow-hidden">
+      <div className="relative">
         <img 
           src={image} 
           alt={name} 
-          className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+          className="w-full h-48 object-cover"
         />
-        <div className="absolute top-2 left-2">
-          <span className="bg-primary/80 text-primary-foreground text-xs px-2 py-1 rounded-full">
-            {category}
-          </span>
-        </div>
+        <button 
+          className={`absolute top-3 right-3 p-2 rounded-full ${isLiked ? 'bg-primary text-white' : 'bg-white/80 text-gray-600'} transition-colors duration-300 hover:bg-primary hover:text-white`}
+          onClick={() => setIsLiked(!isLiked)}
+        >
+          <Heart size={18} fill={isLiked ? 'currentColor' : 'none'} />
+        </button>
       </div>
+      
       <div className="p-4">
-        <h3 className="font-medium text-base mb-2 line-clamp-2 h-12">{name}</h3>
-        <div className="flex items-center justify-between">
-          <span className="text-lg font-semibold">{price} ₽</span>
-          <Button size="sm" className="gap-1">
-            <ShoppingCart size={16} />
-            <span className="sr-only md:not-sr-only md:inline">В корзину</span>
-          </Button>
+        {rating && (
+          <div className="flex items-center mb-2">
+            <div className="flex text-yellow-400 text-sm">
+              ★★★★★
+            </div>
+            <span className="text-gray-500 text-sm ml-1">{rating}</span>
+          </div>
+        )}
+        
+        <h3 className="font-medium text-gray-800 mb-1">{name}</h3>
+        <div className="flex justify-between items-center mt-2">
+          <span className="font-bold text-gray-900">{price} ₽</span>
+          <button className="p-2 bg-primary/10 rounded-full text-primary hover:bg-primary hover:text-white transition-colors duration-300">
+            <ShoppingCart size={18} />
+          </button>
         </div>
       </div>
     </div>
