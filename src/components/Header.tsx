@@ -27,9 +27,6 @@ const Header = () => {
             <Link to="/about" className="font-medium hover:text-primary transition-colors">
               О нас
             </Link>
-            <Link to="/delivery" className="font-medium hover:text-primary transition-colors">
-              Доставка
-            </Link>
             <Link to="/contacts" className="font-medium hover:text-primary transition-colors">
               Контакты
             </Link>
@@ -82,9 +79,6 @@ const Header = () => {
             </Link>
             <Link to="/about" className="block py-2 font-medium hover:text-primary">
               О нас
-            </Link>
-            <Link to="/delivery" className="block py-2 font-medium hover:text-primary">
-              Доставка
             </Link>
             <Link to="/contacts" className="block py-2 font-medium hover:text-primary">
               Контакты

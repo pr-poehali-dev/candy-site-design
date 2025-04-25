@@ -1,206 +1,153 @@
 import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import ProductCard from "@/components/ProductCard";
-import { useState } from "react";
-import { Sliders, ChevronDown } from "lucide-react";
-import { Checkbox } from "@/components/ui/checkbox";
 import { Slider } from "@/components/ui/slider";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
+import { useState } from "react";
+import { Filter, SlidersHorizontal, Search } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Catalog = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [priceRange, setPriceRange] = useState<number[]>([0, 3000]);
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [priceRange, setPriceRange] = useState([0, 5000]);
+  const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
 
-  // Пример данных для каталога товаров
-  const products = [
-    { id: 1, name: "Шоколадный торт 'Брауни'", price: 1500, image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=3387&auto=format&fit=crop", category: "Торты" },
-    { id: 2, name: "Эклеры с ванильным кремом", price: 180, image: "https://images.unsplash.com/photo-1626803775151-61d756612f97?q=80&w=3280&auto=format&fit=crop", category: "Эклеры" },
-    { id: 3, name: "Макаруны 'Малина'", price: 220, image: "https://images.unsplash.com/photo-1612201142855-7873bc1661b4?q=80&w=3270&auto=format&fit=crop", category: "Макаруны" },
-    { id: 4, name: "Торт 'Красный бархат'", price: 1800, image: "https://images.unsplash.com/photo-1616541823729-00fe0aacd32c?q=80&w=3342&auto=format&fit=crop", category: "Торты" },
-    { id: 5, name: "Ванильные эклеры", price: 190, image: "https://images.unsplash.com/photo-1628557044797-f21a177c37ec?q=80&w=3270&auto=format&fit=crop", category: "Эклеры" },
-    { id: 6, name: "Шоколадные кексы", price: 150, image: "https://images.unsplash.com/photo-1606188074044-fcd750f6996a?q=80&w=3270&auto=format&fit=crop", category: "Кексы" },
-    { id: 7, name: "Лимонный торт", price: 1700, image: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=3270&auto=format&fit=crop", category: "Торты" },
-    { id: 8, name: "Фисташковые макаруны", price: 250, image: "https://images.unsplash.com/photo-1558326567-98ae2405596b?q=80&w=3269&auto=format&fit=crop", category: "Макаруны" }
+  // Пример данных для категорий
+  const categories = [
+    { id: 1, name: "Торты", count: 24 },
+    { id: 2, name: "Эклеры", count: 18 },
+    { id: 3, name: "Макаруны", count: 15 },
+    { id: 4, name: "Пирожные", count: 12 },
+    { id: 5, name: "Печенье", count: 10 },
   ];
 
-  // Категории для фильтрации
-  const categories = ["Торты", "Эклеры", "Макаруны", "Кексы"];
-
-  // Фильтрация товаров
-  const filteredProducts = products.filter(product => {
-    // Фильтр по категории
-    if (selectedCategory && product.category !== selectedCategory) {
-      return false;
-    }
-    
-    // Фильтр по цене
-    if (product.price < priceRange[0] || product.price > priceRange[1]) {
-      return false;
-    }
-    
-    return true;
-  });
+  // Пример данных для продуктов
+  const products = [
+    { id: 1, name: "Шоколадный торт 'Брауни'", price: 1500, image: "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=3387&auto=format&fit=crop", category: "Торты" },
+    { id: 2, name: "Эклеры с ванильным кремом", price: 180, image: "https://images.unsplash.com/photo-1608198093002-ad4e005484ec?q=80&w=2982&auto=format&fit=crop", category: "Эклеры" },
+    { id: 3, name: "Макаруны 'Малина'", price: 220, image: "https://images.unsplash.com/photo-1612201142855-7873bc1661b4?q=80&w=3270&auto=format&fit=crop", category: "Макаруны" },
+    { id: 4, name: "Торт 'Красный бархат'", price: 1800, image: "https://images.unsplash.com/photo-1616541823729-00fe0aacd32c?q=80&w=3342&auto=format&fit=crop", category: "Торты" },
+    { id: 5, name: "Шоколадный эклер", price: 190, image: "https://images.unsplash.com/photo-1558326567-98166e50193d?q=80&w=3279&auto=format&fit=crop", category: "Эклеры" },
+    { id: 6, name: "Пирожное 'Тирамису'", price: 280, image: "https://images.unsplash.com/photo-1571115177098-24ec42ed204d?q=80&w=3387&auto=format&fit=crop", category: "Пирожные" },
+    { id: 7, name: "Торт 'Медовик'", price: 1700, image: "https://images.unsplash.com/photo-1535141192574-5d4897c12636?q=80&w=3356&auto=format&fit=crop", category: "Торты" },
+    { id: 8, name: "Ванильные макаруны", price: 210, image: "https://images.unsplash.com/photo-1569864358642-9d1684040f43?q=80&w=3270&auto=format&fit=crop", category: "Макаруны" },
+  ];
 
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
       
-      {/* Заголовок страницы */}
-      <div className="bg-secondary/50 py-8">
+      {/* Banner */}
+      <div className="bg-accent py-12 mb-8">
         <div className="container mx-auto px-4">
-          <h1 className="text-3xl md:text-4xl font-bold">Каталог товаров</h1>
-          <p className="text-muted-foreground mt-2">Выберите сладости на любой вкус</p>
+          <h1 className="text-3xl md:text-4xl font-bold mb-4">Каталог</h1>
+          <div className="flex items-center text-muted-foreground">
+            <Link to="/" className="hover:text-primary">Главная</Link>
+            <span className="mx-2">•</span>
+            <span>Каталог</span>
+          </div>
         </div>
       </div>
-      
-      <div className="container mx-auto px-4 py-8">
+
+      <div className="container mx-auto px-4 pb-16">
         <div className="flex flex-col md:flex-row gap-8">
-          {/* Фильтры (мобильный вид) */}
+          {/* Mobile Filter Toggle */}
           <div className="md:hidden mb-4">
             <Button 
               variant="outline" 
-              className="w-full flex items-center justify-between" 
-              onClick={() => setIsFilterOpen(!isFilterOpen)}
+              onClick={() => setIsMobileFilterOpen(!isMobileFilterOpen)}
+              className="w-full flex justify-between items-center"
             >
-              <span className="flex items-center gap-2">
-                <Sliders size={16} />
+              <span className="flex items-center">
+                <Filter size={16} className="mr-2" />
                 Фильтры
               </span>
-              <ChevronDown size={16} className={`transition-transform ${isFilterOpen ? "transform rotate-180" : ""}`} />
+              <SlidersHorizontal size={16} />
             </Button>
-            
-            {isFilterOpen && (
-              <div className="border rounded-md p-4 mt-2 bg-card">
-                <div className="mb-6">
-                  <h3 className="font-medium mb-3">Категории</h3>
-                  <div className="space-y-2">
-                    {categories.map(category => (
-                      <div key={category} className="flex items-center space-x-2">
-                        <Checkbox 
-                          id={`category-mobile-${category}`} 
-                          checked={selectedCategory === category}
-                          onCheckedChange={() => {
-                            setSelectedCategory(selectedCategory === category ? null : category);
-                          }}
-                        />
-                        <label 
-                          htmlFor={`category-mobile-${category}`}
-                          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                        >
-                          {category}
-                        </label>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                
-                <div>
-                  <h3 className="font-medium mb-3">Цена</h3>
-                  <Slider 
-                    value={priceRange} 
-                    min={0} 
-                    max={3000} 
-                    step={100} 
-                    onValueChange={setPriceRange} 
-                    className="mb-4" 
-                  />
-                  <div className="flex items-center justify-between text-sm text-muted-foreground">
-                    <span>{priceRange[0]} ₽</span>
-                    <span>{priceRange[1]} ₽</span>
-                  </div>
-                </div>
-              </div>
-            )}
           </div>
-          
-          {/* Боковые фильтры (десктоп) */}
-          <div className="hidden md:block w-64 shrink-0">
-            <div className="border rounded-md p-4 bg-card sticky top-24">
-              <div className="mb-6">
-                <h3 className="font-medium mb-3">Категории</h3>
-                <div className="space-y-2">
-                  {categories.map(category => (
-                    <div key={category} className="flex items-center space-x-2">
-                      <Checkbox 
-                        id={`category-${category}`} 
-                        checked={selectedCategory === category}
-                        onCheckedChange={() => {
-                          setSelectedCategory(selectedCategory === category ? null : category);
-                        }}
-                      />
-                      <label 
-                        htmlFor={`category-${category}`}
-                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      >
-                        {category}
-                      </label>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              
-              <div>
-                <h3 className="font-medium mb-3">Цена</h3>
-                <Slider 
-                  value={priceRange} 
-                  min={0} 
-                  max={3000} 
-                  step={100} 
-                  onValueChange={setPriceRange} 
-                  className="mb-4" 
+
+          {/* Filters - Desktop always visible, Mobile conditional */}
+          <div className={`${isMobileFilterOpen || 'hidden md:block'} w-full md:w-64 space-y-8 animate-fade-in`}>
+            {/* Search */}
+            <div>
+              <h3 className="font-medium mb-3">Поиск</h3>
+              <div className="relative">
+                <Input 
+                  placeholder="Найти товар..." 
+                  className="pr-8 bg-muted"
                 />
-                <div className="flex items-center justify-between text-sm text-muted-foreground">
-                  <span>{priceRange[0]} ₽</span>
-                  <span>{priceRange[1]} ₽</span>
-                </div>
+                <Search size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
               </div>
             </div>
+
+            {/* Categories */}
+            <div>
+              <h3 className="font-medium mb-3">Категории</h3>
+              <div className="space-y-2">
+                {categories.map(category => (
+                  <div key={category.id} className="flex items-center">
+                    <Checkbox id={`category-${category.id}`} />
+                    <label htmlFor={`category-${category.id}`} className="ml-2 text-sm cursor-pointer flex-grow">
+                      {category.name}
+                    </label>
+                    <span className="text-xs text-muted-foreground">({category.count})</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Price Range */}
+            <div>
+              <h3 className="font-medium mb-3">Цена</h3>
+              <Slider 
+                defaultValue={[0, 5000]} 
+                max={5000} 
+                step={100}
+                value={priceRange}
+                onValueChange={setPriceRange}
+                className="my-6"
+              />
+              <div className="flex items-center justify-between">
+                <span>{priceRange[0]} ₽</span>
+                <span>{priceRange[1]} ₽</span>
+              </div>
+            </div>
+
+            {/* Apply Filters Button (Mobile only) */}
+            <div className="md:hidden">
+              <Button className="w-full">Применить фильтры</Button>
+            </div>
           </div>
-          
-          {/* Список товаров */}
+
+          {/* Products Grid */}
           <div className="flex-1">
-            <div className="mb-6 flex items-center justify-between">
-              <p className="text-muted-foreground">Найдено товаров: {filteredProducts.length}</p>
-              <select className="bg-background border rounded-md px-3 py-2 text-sm">
+            <div className="flex items-center justify-between mb-6">
+              <p className="text-muted-foreground">Показано {products.length} товаров</p>
+              <select className="bg-muted p-2 rounded-md border border-border focus:outline-none focus:ring-1 focus:ring-primary">
                 <option>По популярности</option>
-                <option>По цене (мин.)</option>
-                <option>По цене (макс.)</option>
-                <option>По названию (А-Я)</option>
+                <option>По возрастанию цены</option>
+                <option>По убыванию цены</option>
+                <option>По названию А-Я</option>
               </select>
             </div>
-            
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredProducts.length > 0 ? (
-                filteredProducts.map(product => (
-                  <ProductCard 
-                    key={product.id} 
-                    id={product.id} 
-                    name={product.name} 
-                    price={product.price} 
-                    image={product.image} 
-                    category={product.category} 
-                  />
-                ))
-              ) : (
-                <div className="col-span-full py-12 text-center">
-                  <p className="text-muted-foreground mb-4">По вашему запросу ничего не найдено</p>
-                  <Button 
-                    onClick={() => {
-                      setSelectedCategory(null);
-                      setPriceRange([0, 3000]);
-                    }}
-                  >
-                    Сбросить фильтры
-                  </Button>
-                </div>
-              )}
+              {products.map(product => (
+                <ProductCard 
+                  key={product.id} 
+                  id={product.id} 
+                  name={product.name} 
+                  price={product.price} 
+                  image={product.image} 
+                  category={product.category} 
+                />
+              ))}
             </div>
           </div>
         </div>
       </div>
-      
+
       {/* Footer */}
-      <footer className="bg-background border-t border-border mt-auto">
+      <footer className="bg-gradient-to-r from-secondary to-accent mt-auto border-t border-border">
         <div className="container mx-auto px-4 py-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
@@ -218,16 +165,13 @@ const Catalog = () => {
               <h4 className="font-semibold mb-4">Информация</h4>
               <ul className="space-y-2">
                 <li>
-                  <a href="/about" className="hover:text-primary transition-colors">О нас</a>
+                  <Link to="/about" className="hover:text-primary transition-colors">О нас</Link>
                 </li>
                 <li>
-                  <a href="/delivery" className="hover:text-primary transition-colors">Доставка и оплата</a>
+                  <Link to="/catalog" className="hover:text-primary transition-colors">Каталог</Link>
                 </li>
                 <li>
-                  <a href="/reviews" className="hover:text-primary transition-colors">Отзывы</a>
-                </li>
-                <li>
-                  <a href="/contacts" className="hover:text-primary transition-colors">Контакты</a>
+                  <Link to="/contacts" className="hover:text-primary transition-colors">Контакты</Link>
                 </li>
               </ul>
             </div>

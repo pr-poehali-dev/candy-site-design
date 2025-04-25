@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import ProductCard from "@/components/ProductCard";
 import CategoryCard from "@/components/CategoryCard";
 import { ChevronRight, Smile, Truck, Medal } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   // Пример данных для категорий
@@ -25,14 +26,16 @@ const Index = () => {
       <Header />
       
       {/* Hero Banner */}
-      <section className="relative bg-accent mb-12">
+      <section className="relative bg-gradient-to-r from-accent to-secondary mb-12 animate-fade-in">
         <div className="container mx-auto px-4 py-16 md:py-24">
           <div className="max-w-xl">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Сладкие моменты для особых случаев</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gradient">Сладкие моменты для особых случаев</h1>
             <p className="text-lg mb-6 text-muted-foreground">Изысканные кондитерские изделия, приготовленные с любовью и вниманием к деталям</p>
-            <div className="flex space-x-4">
+            <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" className="px-8">Заказать</Button>
-              <Button size="lg" variant="secondary">Наш каталог</Button>
+              <Button size="lg" variant="outline" as={Link} to="/catalog">
+                Наш каталог
+              </Button>
             </div>
           </div>
         </div>
@@ -46,13 +49,13 @@ const Index = () => {
       </section>
 
       {/* Categories */}
-      <section className="container mx-auto px-4 mb-16">
+      <section className="container mx-auto px-4 mb-16 animate-fade-in" style={{animationDelay: "0.1s"}}>
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-2xl md:text-3xl font-bold">Категории</h2>
           <Button variant="link" className="gap-1" asChild>
-            <a href="/catalog">
+            <Link to="/catalog">
               Смотреть все <ChevronRight size={16} />
-            </a>
+            </Link>
           </Button>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -69,7 +72,7 @@ const Index = () => {
       </section>
 
       {/* Features */}
-      <section className="bg-secondary py-12 mb-16">
+      <section className="bg-gradient-to-r from-secondary/70 to-accent/70 py-12 mb-16 animate-fade-in" style={{animationDelay: "0.2s"}}>
         <div className="container mx-auto px-4">
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">Почему выбирают нас</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -99,13 +102,13 @@ const Index = () => {
       </section>
 
       {/* Popular Products */}
-      <section className="container mx-auto px-4 mb-16">
+      <section className="container mx-auto px-4 mb-16 animate-fade-in" style={{animationDelay: "0.3s"}}>
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-2xl md:text-3xl font-bold">Популярные товары</h2>
           <Button variant="link" className="gap-1" asChild>
-            <a href="/catalog">
+            <Link to="/catalog">
               Смотреть все <ChevronRight size={16} />
-            </a>
+            </Link>
           </Button>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
@@ -122,8 +125,22 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Newsletter */}
+      <section className="container mx-auto px-4 mb-16 animate-fade-in" style={{animationDelay: "0.4s"}}>
+        <div className="bg-accent rounded-lg p-8 md:p-12">
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">Подпишитесь на наши новости</h2>
+            <p className="text-muted-foreground mb-6">Будьте в курсе новых вкусов, сезонных предложений и специальных скидок</p>
+            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+              <Input placeholder="Ваш email" className="flex-grow" />
+              <Button>Подписаться</Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
-      <footer className="bg-background border-t border-border mt-auto">
+      <footer className="bg-gradient-to-r from-secondary to-accent mt-auto border-t border-border">
         <div className="container mx-auto px-4 py-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
@@ -141,16 +158,13 @@ const Index = () => {
               <h4 className="font-semibold mb-4">Информация</h4>
               <ul className="space-y-2">
                 <li>
-                  <a href="/about" className="hover:text-primary transition-colors">О нас</a>
+                  <Link to="/about" className="hover:text-primary transition-colors">О нас</Link>
                 </li>
                 <li>
-                  <a href="/delivery" className="hover:text-primary transition-colors">Доставка и оплата</a>
+                  <Link to="/catalog" className="hover:text-primary transition-colors">Каталог</Link>
                 </li>
                 <li>
-                  <a href="/reviews" className="hover:text-primary transition-colors">Отзывы</a>
-                </li>
-                <li>
-                  <a href="/contacts" className="hover:text-primary transition-colors">Контакты</a>
+                  <Link to="/contacts" className="hover:text-primary transition-colors">Контакты</Link>
                 </li>
               </ul>
             </div>
