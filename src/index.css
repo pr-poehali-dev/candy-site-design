@@ -1,47 +1,22 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --primary: #e87e98;
-  --primary-foreground: #ffffff;
-  --background: #ffffff;
-  --foreground: #333333;
-  --muted: #f3f4f6;
-  --muted-foreground: #6b7280;
-  --card: #ffffff;
-  --card-foreground: #333333;
-  --border: #e5e7eb;
-  --input: #e5e7eb;
-  --ring: #e87e98;
+  --color-primary: #9b87f5;
+  --color-primary-light: #d6bcfa;
+  --color-secondary: #7E69AB;
 }
 
-body {
-  font-family: 'Montserrat', sans-serif;
-  color: var(--foreground);
-  background-color: var(--background);
+@layer base {
+  body {
+    @apply text-gray-800 bg-white;
+  }
 }
 
 @layer components {
   .hover-card {
-    @apply transition-all duration-300 hover:shadow-md transform hover:-translate-y-1;
+    @apply transition-transform duration-300 hover:-translate-y-2;Я проведу рефак
   }
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in {
-  animation: fade-in 0.3s ease-out;
-}
+}торинг файла About.tsx,

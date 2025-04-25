@@ -1,0 +1,48 @@
+
+import { Link } from "react-router-dom";
+
+interface CallToActionProps {
+  title: string;
+  description: string;
+  primaryLink: {
+    text: string;
+    to: string;
+  };
+  secondaryLink: {
+    text: string;
+    to: string;
+  };
+}
+
+const CallToAction = ({ 
+  title, 
+  description, 
+  primaryLink, 
+  secondaryLink 
+}: CallToActionProps) => {
+  return (
+    <section className="py-16 bg-gradient-to-r from-pink-50 to-purple-50">
+      <div className="container mx-auto px-4 max-w-4xl text-center">
+        <h2 className="text-3xl font-bold mb-6">{title}</h2>
+        <p className="text-gray-700 mb-8">{description}</p>
+        
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Link 
+            to={primaryLink.to}
+            className="px-8 py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary/90 transition shadow-lg shadow-primary/20"
+          >
+            {primaryLink.text}
+          </Link>
+          <Link 
+            to={secondaryLink.to}
+            className="px-8 py-3 bg-white text-gray-800 rounded-lg font-medium hover:bg-gray-50 transition border border-gray-200"
+          >
+            {secondaryLink.text}
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default CallToAction;
