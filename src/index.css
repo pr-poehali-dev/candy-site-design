@@ -1,112 +1,47 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: 350 20% 97%;
-  --foreground: 350 20% 10%;
-  
-  --muted: 350 10% 94%;
-  --muted-foreground: 350 10% 40%;
-  
-  --popover: 350 20% 97%;
-  --popover-foreground: 350 20% 10%;
-  
-  --card: 350 20% 97%;
-  --card-foreground: 350 20% 10%;
-  
-  --border: 350 10% 90%;
-  --input: 350 10% 90%;
-  
-  --primary: 350 70% 70%;
-  --primary-foreground: 350 10% 98%;
-  
-  --secondary: 350 20% 95%;
-  --secondary-foreground: 350 20% 30%;
-  
-  --accent: 350 30% 94%;
-  --accent-foreground: 350 30% 30%;
-  
-  --destructive: 0 100% 50%;
-  --destructive-foreground: 0 0% 100%;
-  
-  --ring: 350 70% 70%;
-  
-  --radius: 0.5rem;
+  --primary: #e87e98;
+  --primary-foreground: #ffffff;
+  --background: #ffffff;
+  --foreground: #333333;
+  --muted: #f3f4f6;
+  --muted-foreground: #6b7280;
+  --card: #ffffff;
+  --card-foreground: #333333;
+  --border: #e5e7eb;
+  --input: #e5e7eb;
+  --ring: #e87e98;
 }
 
-.dark {
-  --background: 350 20% 10%;
-  --foreground: 350 20% 97%;
-  
-  --muted: 350 10% 18%;
-  --muted-foreground: 350 10% 70%;
-  
-  --popover: 350 20% 12%;
-  --popover-foreground: 350 20% 97%;
-  
-  --card: 350 20% 12%;
-  --card-foreground: 350 20% 97%;
-  
-  --border: 350 10% 20%;
-  --input: 350 10% 20%;
-  
-  --primary: 350 70% 60%;
-  --primary-foreground: 350 10% 98%;
-  
-  --secondary: 350 20% 18%;
-  --secondary-foreground: 350 20% 90%;
-  
-  --accent: 350 30% 20%;
-  --accent-foreground: 350 30% 90%;
-  
-  --destructive: 0 100% 50%;
-  --destructive-foreground: 0 0% 100%;
-  
-  --ring: 350 70% 60%;
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--foreground);
+  background-color: var(--background);
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-semibold;
+@layer components {
+  .hover-card {
+    @apply transition-all duration-300 hover:shadow-md transform hover:-translate-y-1;
   }
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {
+@keyframes fade-in {
+  0% {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(10px);
   }
-  to {
+  100% {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-.hover-card {
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.hover-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-}
-
-.text-gradient {
-  background: linear-gradient(135deg, hsl(var(--primary)), hsl(320, 70%, 60%));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
 }
